@@ -10,4 +10,4 @@ lockdir=/tmp/Pi50DBackupMove.lock
      exit 0
 fi
 #/usr/bin/rsync -av --ignore-existing --remove-source-files /home/pi/temp50DPhotos/ /mnt/our_bible/Pi50DBackup
-/usr/bin/rsync -av --remove-source-files /home/pi/temp50DPhotos/ /mnt/our_bible/Pi50DBackup
+/usr/bin/rsync -av --remove-source-files --include='*.CR2' --include=".JPG"  /home/pi/temp50DPhotos/ /mnt/our_bible/Pi50DBackup
