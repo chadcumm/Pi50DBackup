@@ -19,6 +19,5 @@ while [ -z ${DEVICE} ]
         DEVICE=$(gphoto2 --auto-detect | grep usb | cut -b 36-42 | sed 's/,/\//')
 done
 cd /home/pi/temp50DPhotos
-mkdir "`date --iso-8601`" && cd $_
 gphoto2 --get-all-files
 #exiftool -r -d %Y%m%d-%H%M%S.%%e "-FileName<DateTimeOriginal" .
