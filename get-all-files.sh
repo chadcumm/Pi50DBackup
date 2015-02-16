@@ -17,6 +17,7 @@ cd /home/pi/temp50DPhotos
 touch $lockfile
 gphoto2 --get-all-files --force-overwrite
 #exiftool -r -d %Y%m%d-%H%M%S.%%e "-FileName<DateTimeOriginal" .
+python /home/pi/Pi50DBackup/send_get.py
 rm $lockfile
 
      # Remove lockdir when the script finishes, or when it receives a signal
