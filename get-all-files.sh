@@ -4,6 +4,8 @@ lockfile=/tmp/Pi50DBackupCopy.lock
 if mkdir "$lockdir"
 then
      echo >&2 "successfully acquired lock"
+	
+	trap 'rm -rf "$lockdir"; exit $?' INT TERM EXIT
 
 DEVICE=$(gphoto2 --auto-detect | grep usb | cut -b 36-42 | sed 's/,/\//')
 while [ -z ${DEVICE} ]

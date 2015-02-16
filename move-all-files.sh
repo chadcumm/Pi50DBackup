@@ -4,6 +4,9 @@ lockdir=/tmp/Pi50DBackupMove.lock
  then
      echo >&2 "successfully acquired lock"
 
+	trap 'rm -rf "$lockdir"; exit $?' INT TERM EXIT
+
+
 #/usr/bin/rsync -av --ignore-existing --remove-source-files /home/pi/temp50DPhotos/ /mnt/our_bible/Pi50DBackup
 /usr/bin/rsync -av --remove-source-files --include='*.CR2' --include=".JPG"  /home/pi/temp50DPhotos/ /mnt/our_bible/Pi50DBackup
 
