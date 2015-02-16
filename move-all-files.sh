@@ -24,4 +24,5 @@ lockdir=/tmp/Pi50DBackupMove.lock
      echo >&2 "cannot acquire lock, giving up on $lockdir"
      exit 0
 fi
-/usr/bin/rsync -av --ignore-existing --remove-source-files /home/pi/temp50DPhotos/ /mnt/our_bible/Pi50DBackup
+#/usr/bin/rsync -av --ignore-existing --remove-source-files /home/pi/temp50DPhotos/ /mnt/our_bible/Pi50DBackup
+/usr/bin/rsync -av --remove-source-files /home/pi/temp50DPhotos/ /mnt/our_bible/Pi50DBackup

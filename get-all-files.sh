@@ -19,5 +19,5 @@ while [ -z ${DEVICE} ]
         DEVICE=$(gphoto2 --auto-detect | grep usb | cut -b 36-42 | sed 's/,/\//')
 done
 cd /home/pi/temp50DPhotos
-gphoto2 --get-all-files
+gphoto2 --get-all-files --force-overwrite
 #exiftool -r -d %Y%m%d-%H%M%S.%%e "-FileName<DateTimeOriginal" .
