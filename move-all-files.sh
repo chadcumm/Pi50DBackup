@@ -9,7 +9,7 @@ lockdir=/tmp/Pi50DBackupMove.lock
 
 #/usr/bin/rsync -av --ignore-existing --remove-source-files /home/pi/temp50DPhotos/ /mnt/our_bible/Pi50DBackup
 /usr/bin/rsync -av --remove-source-files --include='*.CR2' --include=".JPG"  /home/pi/temp50DPhotos/ /mnt/our_bible/Pi50DBackup
-python /home/pi/Pi50DBackup/send_copy.py
+#python /home/pi/Pi50DBackup/send_copy.py
 
      # Remove lockdir when the script finishes, or when it receives a signal
      trap 'rm -rf "$lockdir"' 0    # remove directory when script finishes
