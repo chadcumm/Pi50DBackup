@@ -20,6 +20,16 @@ case "$ACTION" in
               --embedded-image \
               --overwrite "$ARGUMENT"
         fi
+
+	wget -q --tries=1 --timeout=3 -O - http://google.com > /dev/null
+    	if [[ $? -eq 0 ]]; then
+        	echo "$self: ONLINE"
+		upload_file=${ARGUMENT%.*}
+		echo "$self: $upload_file.embedded.jpg"
+		/usr/bin/perl /home/pi/Pi50DBackup/PiwigoUpload.pl --file=$upload_file
+    	else
+        	echo "$self: Not online"
+    	fi
         ;;
     stop)
         echo "$self: STOP"
