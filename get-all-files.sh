@@ -7,11 +7,11 @@ then
 	
 	trap 'rm -rf "$lockdir"; exit $?' INT TERM EXIT
 
-DEVICE=$(gphoto2 --auto-detect | grep usb | cut -b 36-42 | sed 's/,/\//')
+DEVICE=$(gphoto2 --auto-detect | grep usb | cut -b 1-5 | sed 's/,/\//')
 while [ -z ${DEVICE} ]
         do
         sleep 1
-        DEVICE=$(gphoto2 --auto-detect | grep usb | cut -b 36-42 | sed 's/,/\//')
+        DEVICE=$(gphoto2 --auto-detect | grep usb | cut -b 1-5 | sed 's/,/\//')
 done
 cd /home/pi/temp50DPhotos
 touch $lockfile
