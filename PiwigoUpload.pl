@@ -54,9 +54,9 @@ print "\n";
  
 if ($response->is_success) {
     print "upload successful\n";
+    $result = `rm $opt{file}`;
+
 }
 else {
-    warn 'A problem has occured during upload', "\n";
-    warn $response->decoded_content, "\n";
     die $response->status_line;
 }
