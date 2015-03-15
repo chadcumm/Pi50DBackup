@@ -21,11 +21,11 @@ case "$ACTION" in
               --overwrite "$ARGUMENT"
         fi
 
-	wget -q --tries=1 --timeout=3 -O - http://google.com > /dev/null
+	wget -q --tries=2 --timeout=3 -O - http://google.com > /dev/null
     	if [[ $? -eq 0 ]]; then
         	echo "$self: ONLINE"
 		upload_file=${ARGUMENT%.*}
-		echo "$self: $upload_file.embedded.jpg"
+		echo "$self upload: $upload_file.embedded.jpg"
 		/usr/bin/perl /home/pi/Pi50DBackup/PiwigoUpload.pl --file=$upload_file
     	else
         	echo "$self: Not online"

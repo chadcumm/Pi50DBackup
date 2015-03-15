@@ -31,7 +31,7 @@ $ua->post(
     }
 );
  
-$ua->post(
+$response = $ua->post(
     $conf{base_url}.'/ws.php',
     {
         method => 'pwg.images.addSimple',
@@ -45,3 +45,18 @@ $ua->post(
     },
     'Content_Type' => 'form-data',
 );
+
+print "-" x 50, "\n";
+printf("response code    : %u\n", $response->code);
+printf("response message : %s\n", $response->message);
+print "-" x 50, "\n";
+print "\n";
+ 
+if ($response->is_success) {
+    print "upload successful\n";
+}
+else {
+    warn 'A problem has occured during upload', "\n";
+    warn $response->decoded_content, "\n";
+    die $response->status_line;
+}
