@@ -54,7 +54,7 @@ print "\n";
  
 if ($response->is_success) {
     print "upload successful\n";
-    $result = `rm $opt{file}`;
+    $result = `sudo rm -f $opt{file}`;
 
 }
 else {

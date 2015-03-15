@@ -40,6 +40,22 @@ case "$ACTION" in
         ;;
     stop)
         echo "$self: STOP"
+	wget -q --tries=3 --timeout=5 -O - http://google.com > /dev/null
+    	if [[ $? -eq 0 ]]; then
+		echo "could try to upload now"
+		for file in /home/pi/temp50DPhotos/*.jpg
+		do
+		    if [ -f "${file}" ]; then
+			    /usr/bin/perl /home/pi/Pi50DBackup/PiwigoUpload.pl --file=${file} &
+		    fi
+		done
+		for file in /home/pi/temp50DPhotos/*.cr2
+		do
+		    if [ -f "${file}" ]; then
+			/usr/bin/perl /home/pi/Pi50DBackup/MoveToCIFS.pl --file=${file} &
+		    fi
+		done
+	fi
         ;;
     *)
         echo "$self: Unknown action: $ACTION"
