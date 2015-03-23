@@ -7,7 +7,7 @@ user_token = "u1ToGHejYyUn25bNuECZcVKM8vYttw"
 # Message specific variables
 title = "files moved from 50D"
 message = "images from 50D are now on bananapi"
-url = "http://stewartcummings.com"
+url = "http://stewartcummings.com/canon50d"
 # To remove any of these fields you will need to remove them
 # from the conn.request() below
 

@@ -1,2 +1,2 @@
 #!/bin/bash
-echo /home/pi/Pi50DBackup/TetheredCapture.sh | batch
+echo /home/pi/Pi50DBackup/NonTetheredCapture.sh | batch
