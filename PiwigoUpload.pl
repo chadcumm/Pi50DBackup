@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# perl piwigo_remote.pl --action=pwg.images.add --file=erwann_rocher-web.jpg --define categories=9
+# perl piwigo_remote.pl --action=pwg.images.add --file=erwann_rocher-web.jpg
  
 use LWP::UserAgent;
 use Getopt::Long;
