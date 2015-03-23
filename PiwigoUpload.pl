@@ -4,6 +4,7 @@
  
 use LWP::UserAgent;
 use Getopt::Long;
+use POSIX 'strftime';
 
 my %opt = ();
 GetOptions(
@@ -30,6 +31,8 @@ $ua->post(
         password => 'uploadpics',
     }
 );
+
+$date = strftime '%Y-%m-%d', localtime;
  
 $response = $ua->post(
     $conf{base_url}.'/ws.php',
@@ -40,6 +43,7 @@ $response = $ua->post(
         tags => 'canon50D',
         name => '',
         comment => '',
+	date_creation => $date, 
         author => 'Canon50D',
         level => 0,
     },
