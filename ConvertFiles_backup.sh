@@ -21,10 +21,25 @@ case "$ACTION" in
               --overwrite "$ARGUMENT"
         fi
 
+	wget -q --tries=3 --timeout=5 -O - http://google.com > /dev/null
+    	if [[ $? -eq 0 ]]; then
+        	echo "$self: ONLINE"
+		origin_file=$ARGUMENT
+		upload_file=${ARGUMENT%.*}
+		upload_filename="$upload_file.embedded.jpg"
+		echo "$self upload: $upload_filename"
+		/usr/bin/perl /home/pi/Pi50DBackup/PiwigoUpload.pl --file=$upload_filename
+
+		/bin/df -t cifs | grep //192.168.1.1/Data > /dev/null
+	    	if [[ $? -eq 0 ]]; then
+			/usr/bin/perl /home/pi/Pi50DBackup/MoveToCIFS.pl --file=$origin_file
+		fi
+    	else
+        	echo "$self: Not online"
+    	fi
         ;;
     stop)
         echo "$self: STOP"
-	python /home/pi/Pi50DBackup/send_done.py
 	wget -q --tries=3 --timeout=5 -O - http://google.com > /dev/null
     	if [[ $? -eq 0 ]]; then
 		echo "could try to upload now"
